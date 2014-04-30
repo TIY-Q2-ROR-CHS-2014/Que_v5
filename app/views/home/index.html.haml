@@ -1,0 +1,36 @@
+%div.red_background
+  Dude man sup.
+  .blue_background
+    This is blue, not red.
+    .blue_background
+      3
+      %h3
+        5
+      .red_background
+        4
+        %h3.black_background
+          5
+        %h3.red_background{brian_is_cool: "brian is OH so cool.", data: { kevin_is_not_cool: "false" } }
+          5
+.blue_background
+  Dude man also sup.
+
+= link_to "Funk Names", search_names_ques_path
+= render 'ques/search'
+
+%h4 These Guys are in Queue
+= link_to "I need help!", new_que_path
+= link_to "Hide Students", "javascript:void(0);", class: "hide_students"
+= link_to "Show Students", "javascript:void(0);", class: "show_students"
+= link_to "Remove Students", "javascript:void(0);", class: "remove_students"
+%ul.students
+  - @people_in_que.each do |person|
+    = render 'ques/student', student: person
+
+%h4 People Resolved
+
+- @people_who_are_inifintely_smarter_then_they_were_before_but_still_cant_spell.each do |person|
+  = person.name
+  helped at
+  = person.updated_at.strftime("%l:%M%p")
+  %br
